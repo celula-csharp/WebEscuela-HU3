@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using webEscuela.Application.Dto;
+using webEscuela.Application.Services;
 using webEscuela.Domain.Entities;
 
-namespace DefaultNamespace;
+namespace webEscuela.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class CourseController : ControllerBase

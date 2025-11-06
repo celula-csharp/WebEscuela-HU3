@@ -3,7 +3,7 @@ using webEscuela.Domain.Entities;
 using webEscuela.Domain.Interfaces;
 using webEscuela.Infrastructure.Data;
 
-namespace webEscuela.Infrastructure.Data.Repositories;
+namespace webEscuela.Infrastructure.Repositories;
 
 public class StudentRepository : IStudentRepository
 {

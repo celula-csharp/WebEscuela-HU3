@@ -1,5 +1,12 @@
 
 
+using webEscuela.Application.Interfaces;
+using webEscuela.Application.Services;
+using webEscuela.Domain.Interfaces;
+using webEscuela.Infrastructure.Repositories;
+using webEscuela.Infrastructure.Extensions;
+using webEscuela.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Database Dependency Injection:

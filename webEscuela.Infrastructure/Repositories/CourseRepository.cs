@@ -1,6 +1,6 @@
-using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
 using webEscuela.Domain.Entities;
+using webEscuela.Domain.Interfaces;
 using webEscuela.Infrastructure.Data;
 
 namespace webEscuela.Infrastructure.Repositories;

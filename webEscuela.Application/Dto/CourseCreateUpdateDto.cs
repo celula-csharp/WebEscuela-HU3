@@ -1,4 +1,4 @@
-namespace DefaultNamespace;
+namespace webEscuela.Application.Dto;
 
 public class CourseCreateUpdateDto
 {
