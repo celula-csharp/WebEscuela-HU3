@@ -1,3 +1,7 @@
+using webEscuela.Application.Interfaces;
+using webEscuela.Application.Services;
+using webEscuela.Domain.Interfaces;
+using webEscuela.Infrastructure.Data.Repositories;
 using webEscuela.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Database Dependency Injection:
 builder.Services.AddInfrastructure(builder.Configuration);
 
-
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 // Add services to the container.
 
