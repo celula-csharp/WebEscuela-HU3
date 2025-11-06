@@ -1,4 +1,11 @@
+using webEscuela.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Database Dependency Injection:
+builder.Services.AddInfrastructure(builder.Configuration);
+
+
 
 // Add services to the container.
 
