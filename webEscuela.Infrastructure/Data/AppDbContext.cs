@@ -54,7 +54,7 @@ public class AppDbContext : DbContext
         
         //Admin
         modelBuilder.Entity<Admin>()
-            .HasIndex(c => c.AdminCode)
+            .HasIndex(c => c.Id)
             .IsUnique();
         
         modelBuilder.Entity<Admin>()
