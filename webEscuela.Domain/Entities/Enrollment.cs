@@ -9,6 +9,6 @@ public class Enrollment
     public DateTime EnrollmentDate { get; set; }
     
     // Relations 1:N
-    public Student Student { get; set; }
-    public Course Course { get; set; }
+    public Student Student { get; set; } = null!;
+    public Course Course { get; set; } = null!;
 }

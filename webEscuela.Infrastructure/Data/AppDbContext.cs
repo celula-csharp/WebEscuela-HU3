@@ -53,12 +53,20 @@ public class AppDbContext : DbContext
             .IsUnique();
         
         //Admin
+        // modelBuilder.Entity<Admin>()
+        //     .HasIndex(c => c.AdminCode)
+        //     .IsUnique();
+        //
+        // modelBuilder.Entity<Admin>()
+        //     .HasIndex(c => c.UserName)
+        //     .IsUnique();
+        
         modelBuilder.Entity<Admin>()
-            .HasIndex(c => c.AdminCode)
+            .HasIndex(c => c.Id)
             .IsUnique();
         
         modelBuilder.Entity<Admin>()
-            .HasIndex(c => c.UserName)
+            .HasIndex(c => c.Email)
             .IsUnique();
         
         base.OnModelCreating(modelBuilder);
@@ -66,10 +74,18 @@ public class AppDbContext : DbContext
 
 
     // To create tables on the DB:
-    public DbSet<Admin> admins_tb { get; set; }
-    public DbSet<Course> courses_tb { get; set; }
-    public DbSet<Enrollment> enrollments_tb { get; set; }
-    public DbSet<Student> students_tb { get; set; }
-    public DbSet<Teacher> teachers_tb { get; set; }
+    // public DbSet<Admin> admins_tb { get; set; }
+    // public DbSet<Course> courses_tb { get; set; }
+    // public DbSet<Enrollment> enrollments_tb { get; set; }
+    // public DbSet<Student> students_tb { get; set; }
+    // public DbSet<Teacher> teachers_tb { get; set; }
+    
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<Enrollment> Enrollments { get; set; }
+    
+    public DbSet<User> Users { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<Admin> Admins { get; set; }
     
 }

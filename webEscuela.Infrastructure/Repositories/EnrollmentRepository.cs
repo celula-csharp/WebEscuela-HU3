@@ -20,10 +20,10 @@ public class EnrollmentRepository : IEnrollmentRepository
     {
         try
         {
-            var enrollnew = await _appDbContext.courses_tb.FindAsync(enrollment.Id);
+            var enrollnew = await _appDbContext.Enrollments.FindAsync(enrollment.Id);
             if (enrollnew != null) return null;
 
-            await _appDbContext.enrollments_tb.AddAsync(enrollment);
+            await _appDbContext.Enrollments.AddAsync(enrollment);
             await _appDbContext.SaveChangesAsync();
             return enrollment;
         }
@@ -38,7 +38,7 @@ public class EnrollmentRepository : IEnrollmentRepository
     {
         try
         {
-            return await _appDbContext.enrollments_tb.ToListAsync();
+            return await _appDbContext.Enrollments.ToListAsync();
         }
         catch (HttpRequestException e)
         {
@@ -53,7 +53,7 @@ public class EnrollmentRepository : IEnrollmentRepository
     {
         try
         {
-            var document = await _appDbContext.enrollments_tb.FirstAsync(d => d.Student.DocNumber == doc);
+            var document = await _appDbContext.Enrollments.FirstAsync(d => d.Student.DocNumber == doc);
             return document;
         }
         catch (Exception e)
@@ -81,7 +81,7 @@ public class EnrollmentRepository : IEnrollmentRepository
     {
         try
         {
-            var exitId = await _appDbContext.enrollments_tb.FindAsync(id);
+            var exitId = await _appDbContext.Enrollments.FindAsync(id);
             if (exitId == null) return null;
             
             // update 
@@ -109,7 +109,7 @@ public class EnrollmentRepository : IEnrollmentRepository
     {
         try
         {
-            var deleteId = await _appDbContext.enrollments_tb.FindAsync(id);
+            var deleteId = await _appDbContext.Enrollments.FindAsync(id);
             if (deleteId == null) return false;
 
             _appDbContext.Remove(deleteId);
