@@ -7,7 +7,7 @@ namespace webEscuela.Api.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/student")]
 public class StudentController : ControllerBase
 {
     private readonly IStudentService _service;

@@ -16,8 +16,8 @@ public interface IEnrollmentRepository
     Task<Enrollment> CreateEnrollmentAsync(Enrollment enrollment);
 
     Task<IEnumerable<Enrollment>> GetAllEnrollmentAsync();
-
-    Task<Enrollment> GetDocumentEnrollmentAsyn(string id);
+    Task<Enrollment> GetEnrollmentByIdAsync(int id);
+    Task<Enrollment> GetDocumentEnrollmentAsync(int id);
 
     Task<Enrollment> UpdateEnrollmentAsync(int id, Enrollment enrollment);
 

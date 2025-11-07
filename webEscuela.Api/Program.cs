@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using webEscuela.Application.Auth;
 using webEscuela.Application.Interfaces;
+using webEscuela.Application.Interfaces.Services;
 using webEscuela.Application.Services;
 using webEscuela.Domain.Entities;
 using webEscuela.Domain.Interfaces;

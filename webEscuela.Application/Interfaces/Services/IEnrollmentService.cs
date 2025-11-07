@@ -9,7 +9,8 @@ public interface IEnrollmentService
 
     Task<IEnumerable<EnrollmentDto>> GetAllEnrollmentAsync();
 
-    Task<EnrollmentDto> GetDocumentEnrollmentAsyn(string id);
+    Task<EnrollmentDto> GetEnrollmentByIdAsync(int id);
+    Task<EnrollmentDto> GetDocumentEnrollmentAsyn(int id);
 
     Task<EnrollmentDto> UpdateEnrollmentAsync(int id, EnrollmentUpdateDto enrollmentDto);
 

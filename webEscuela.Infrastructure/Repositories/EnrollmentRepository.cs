@@ -47,13 +47,27 @@ public class EnrollmentRepository : IEnrollmentRepository
         }
     }
 
-   
-    // buscar por docuemto 
-    public async Task<Enrollment> GetDocumentEnrollmentAsyn(string doc)
+    public async Task<Enrollment> GetEnrollmentByIdAsync(int id)
     {
         try
         {
-            var document = await _appDbContext.Enrollments.FirstAsync(d => d.Student.DocNumber == doc);
+            var enroll = await _appDbContext.Enrollments.FindAsync(id);
+            return enroll;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+
+    // buscar por docuemto 
+    public async Task<Enrollment> GetDocumentEnrollmentAsync(int id)
+    {
+        try
+        {
+            var document = await _appDbContext.Enrollments.FirstAsync(d => d.Student.Id == id);
             return document;
         }
         catch (Exception e)

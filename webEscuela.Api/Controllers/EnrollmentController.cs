@@ -1,13 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using webEscuela.Application.Dtos;
 using webEscuela.Application.Interfaces.Services;
 
 namespace webEscuela.Api.Controllers;
+
+[Authorize]
 [ApiController]
-[Route("api/[controller]")]
-
-
+[Route("api/enrollment")]
 public class EnrollmentController : ControllerBase
 {
     private readonly IEnrollmentService _enrollmentService;
@@ -18,7 +19,7 @@ public class EnrollmentController : ControllerBase
     }
 
     
-    [HttpPost("Creation")]
+    [HttpPost]
     public async Task<ActionResult<EnrollmentDto>> create(EnrollmentCreateDto enrollmentDto)
     {
         var result = await _enrollmentService.CreateEnrollmentAsync(enrollmentDto);
@@ -33,8 +34,15 @@ public class EnrollmentController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<EnrollmentDto>> GetDocument(string id)
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<EnrollmentDto>> getById(int id)
+    {
+        var result = await _enrollmentService.GetEnrollmentByIdAsync(id);
+        return Ok(result);
+    }
+    
+    [HttpGet("user/{id:int}")]
+    public async Task<ActionResult<EnrollmentDto>> getByStudentId(int id)
     {
         var result = await _enrollmentService.GetDocumentEnrollmentAsyn(id);
         return Ok(result);

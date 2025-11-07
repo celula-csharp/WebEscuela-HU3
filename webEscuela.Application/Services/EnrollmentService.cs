@@ -25,8 +25,6 @@ public class EnrollmentService : IEnrollmentService
             CourseId = enrollment.CourseId,
             Grade = enrollment.Grade,
             EnrollmentDate = enrollment.EnrollmentDate
-
-
         };
     }
     
@@ -51,9 +49,15 @@ public class EnrollmentService : IEnrollmentService
         return enrollme.Select(MapConvert);
     }
 
-    public async Task<EnrollmentDto> GetDocumentEnrollmentAsyn(string id)
+    public async Task<EnrollmentDto> GetEnrollmentByIdAsync(int id)
     {
-        var enrollme = await _enrollmenRepository.GetDocumentEnrollmentAsyn(id);
+        var enroll = await _enrollmenRepository.GetEnrollmentByIdAsync(id);
+        return MapConvert(enroll);
+    }
+
+    public async Task<EnrollmentDto> GetDocumentEnrollmentAsyn(int id)
+    {
+        var enrollme = await _enrollmenRepository.GetDocumentEnrollmentAsync(id);
         return MapConvert(enrollme);
     }
 

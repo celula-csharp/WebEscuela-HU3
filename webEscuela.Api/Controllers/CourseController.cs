@@ -21,7 +21,7 @@ public class CourseController : ControllerBase
     // ---------------------------------------------
     
     // GET BY ID
-    [HttpGet("getById/{id:int}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
         var course = await _courseService.GetByIdAsync_(id);
@@ -34,7 +34,7 @@ public class CourseController : ControllerBase
     
     
     // GET ALL:
-    [HttpGet("getAll")]
+    [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var courses = await _courseService.GetAllAsync_();
@@ -44,7 +44,7 @@ public class CourseController : ControllerBase
 
     
     // CREATE:
-    [HttpPost("create")]
+    [HttpPost]
     public async Task<IActionResult> Create([FromBody] CourseCreateUpdateDto courseDto)
     {
         if (!ModelState.IsValid)
@@ -68,7 +68,7 @@ public class CourseController : ControllerBase
     
     
     // UPDATE:
-    [HttpPut("update/{id:int}")]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody] CourseCreateUpdateDto courseDto)
     {
         if (!ModelState.IsValid)
