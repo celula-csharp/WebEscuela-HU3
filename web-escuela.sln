@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Application", "webEscuela.Application\webEscuela.Application.csproj", "{2F601D94-8F26-4C2E-8644-06E043ED3B76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Domain", "webEscuela.Domain\webEscuela.Domain.csproj", "{A6ED00E9-B26C-4689-8492-5597CB741879}"
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Api", "webEscuela.Api\webEscuela.Api.csproj", "{50CFF1C2-62C7-4690-BF66-17A7D94BC465}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Test", "webEscuela.Test\webEscuela.Test.csproj", "{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E7B61924-C9C7-46EC-BCF4-C1AC1C0D4FC5}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
