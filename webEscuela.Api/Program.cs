@@ -12,6 +12,8 @@ using webEscuela.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Database Dependency Injection:
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -62,6 +64,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(key))
         };
     });
+
+
+// ---------------------------------------------------------------
+// CORS: permitir cualquier origen en entorno de desarrollo
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevCorsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+// 
 
 //-----------------------------------------------------------------
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
