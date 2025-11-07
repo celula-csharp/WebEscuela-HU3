@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Api", "webEscuela.Api\webEscuela.Api.csproj", "{50CFF1C2-62C7-4690-BF66-17A7D94BC465}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webEscuela.Test", "webEscuela.Test\webEscuela.Test.csproj", "{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{50CFF1C2-62C7-4690-BF66-17A7D94BC465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50CFF1C2-62C7-4690-BF66-17A7D94BC465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50CFF1C2-62C7-4690-BF66-17A7D94BC465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1413C0-6A21-4E51-B620-9C0DCA434DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
