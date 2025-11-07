@@ -23,6 +23,12 @@ public class AuthController : ControllerBase
         _registerPersonService = registerPersonService;
     }
 
+    [HttpGet("ping")]
+    public IActionResult Ping()
+    {
+        return Ok("pong");
+    }
+    
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
