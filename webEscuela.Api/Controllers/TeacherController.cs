@@ -7,25 +7,25 @@ namespace webEscuela.Api.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("api/[controller]")]
-public class StudentController : ControllerBase
+[Route("api/teacher")]
+public class TeacherController : ControllerBase
 {
-    private readonly IStudentService _service;
+    private readonly ITeacherService _service;
 
-    public StudentController(IStudentService service)
+    public TeacherController(ITeacherService service)
     {
         _service = service;
     }
 
-    // GET /api/students
+    // GET /api/teacher
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var students = await _service.GetAllAsync();
-        return Ok(students);
+        var teachers = await _service.GetAllAsync();
+        return Ok(teachers);
     }
 
-    // GET /api/students/{id}
+    // GET /api/teacher/{id}
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -34,7 +34,7 @@ public class StudentController : ControllerBase
         return Ok(student);
     }
 
-    // POST /api/students
+    // POST /api/teacher
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] StudentCreateDto dto)
     {
@@ -46,9 +46,9 @@ public class StudentController : ControllerBase
         //     new { id = student.Id, message = "Estudiante creado correctamente." });
     }
 
-    // PUT /api/students/{id}
+    // PUT /api/teacher/{id}
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody] StudentUpdateDto dto)
+    public async Task<IActionResult> Update(int id, [FromBody] TeacherUpdateDto dto)
     {
         var updated = await _service.UpdateAsync(id, dto);
         if (!updated) return NotFound();
@@ -56,7 +56,7 @@ public class StudentController : ControllerBase
         return Ok(new { message = "Estudiante actualizado correctamente." });
     }
 
-    // DELETE /api/students/{id}
+    // DELETE /api/teacher/{id}
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

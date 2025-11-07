@@ -24,26 +24,11 @@ public class StudentService : IStudentService
         return await _repository.GetByIdAsync(id);
     }
 
-    public async Task<Student> CreateAsync(StudentCreateDto dto)
+    public Task<Student> CreateAsync(RegisterStudentRequest dto)
     {
-        var student = new Student
-        {
-            Name = dto.Name,
-            LastName = dto.LastName,
-            Career = dto.Career,
-            StartDate = dto.StartDate ?? DateTime.UtcNow,
-            Status = dto.Status ?? true,
-            Code = Guid.NewGuid().ToString("N")[..8], 
-            Role = Role.student,
-            DocNumber = "",
-            Email = "",
-            Phone = "",
-            UserName = "",
-            Password = ""
-        };
-
-        return await _repository.AddAsync(student);
+        throw new NotImplementedException();
     }
+
 
     public async Task<bool> UpdateAsync(int id, StudentUpdateDto dto)
     {

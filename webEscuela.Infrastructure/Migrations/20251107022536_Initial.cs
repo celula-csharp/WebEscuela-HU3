@@ -16,92 +16,96 @@ namespace webEscuela.Infrastructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "admins_tb",
+                name: "admins",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AdminCode = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserName = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_admins_tb", x => x.Id);
+                    table.PrimaryKey("PK_admins", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "students_tb",
+                name: "users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DocNumber = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Phone = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UserName = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Password = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Role = table.Column<int>(type: "int", nullable: false),
+                    Code = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_users", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "students",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Career = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DocNumber = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Phone = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserName = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Password = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Role = table.Column<int>(type: "int", nullable: false),
-                    Code = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students_tb", x => x.Id);
+                    table.PrimaryKey("PK_students", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_students_users_Id",
+                        column: x => x.Id,
+                        principalTable: "users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "teachers_tb",
+                name: "teachers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Specialization = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DocNumber = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Phone = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserName = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Password = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Role = table.Column<int>(type: "int", nullable: false),
-                    Code = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_teachers_tb", x => x.Id);
+                    table.PrimaryKey("PK_teachers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_teachers_users_Id",
+                        column: x => x.Id,
+                        principalTable: "users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "courses_tb",
+                name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -116,18 +120,18 @@ namespace webEscuela.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_courses_tb", x => x.Id);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_courses_tb_teachers_tb_TeacherId",
+                        name: "FK_Courses_teachers_TeacherId",
                         column: x => x.TeacherId,
-                        principalTable: "teachers_tb",
+                        principalTable: "teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "enrollments_tb",
+                name: "Enrollments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -139,100 +143,76 @@ namespace webEscuela.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_enrollments_tb", x => x.Id);
+                    table.PrimaryKey("PK_Enrollments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_enrollments_tb_courses_tb_CourseId",
+                        name: "FK_Enrollments_Courses_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "courses_tb",
+                        principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_enrollments_tb_students_tb_StudentId",
+                        name: "FK_Enrollments_students_StudentId",
                         column: x => x.StudentId,
-                        principalTable: "students_tb",
+                        principalTable: "students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_admins_tb_AdminCode",
-                table: "admins_tb",
-                column: "AdminCode",
+                name: "IX_admins_Email",
+                table: "admins",
+                column: "Email",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_admins_tb_UserName",
-                table: "admins_tb",
-                column: "UserName",
+                name: "IX_admins_Id",
+                table: "admins",
+                column: "Id",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_courses_tb_Code",
-                table: "courses_tb",
+                name: "IX_Courses_Code",
+                table: "Courses",
                 column: "Code",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_courses_tb_TeacherId",
-                table: "courses_tb",
+                name: "IX_Courses_TeacherId",
+                table: "Courses",
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_enrollments_tb_CourseId",
-                table: "enrollments_tb",
+                name: "IX_Enrollments_CourseId",
+                table: "Enrollments",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_enrollments_tb_StudentId",
-                table: "enrollments_tb",
+                name: "IX_Enrollments_StudentId",
+                table: "Enrollments",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_tb_Code",
-                table: "students_tb",
+                name: "IX_users_Code",
+                table: "users",
                 column: "Code",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_tb_DocNumber",
-                table: "students_tb",
+                name: "IX_users_DocNumber",
+                table: "users",
                 column: "DocNumber",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_tb_Email",
-                table: "students_tb",
+                name: "IX_users_Email",
+                table: "users",
                 column: "Email",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_tb_UserName",
-                table: "students_tb",
-                column: "UserName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_teachers_tb_Code",
-                table: "teachers_tb",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_teachers_tb_DocNumber",
-                table: "teachers_tb",
-                column: "DocNumber",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_teachers_tb_Email",
-                table: "teachers_tb",
-                column: "Email",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_teachers_tb_UserName",
-                table: "teachers_tb",
+                name: "IX_users_UserName",
+                table: "users",
                 column: "UserName",
                 unique: true);
         }
@@ -241,19 +221,22 @@ namespace webEscuela.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "admins_tb");
+                name: "admins");
 
             migrationBuilder.DropTable(
-                name: "enrollments_tb");
+                name: "Enrollments");
 
             migrationBuilder.DropTable(
-                name: "courses_tb");
+                name: "Courses");
 
             migrationBuilder.DropTable(
-                name: "students_tb");
+                name: "students");
 
             migrationBuilder.DropTable(
-                name: "teachers_tb");
+                name: "teachers");
+
+            migrationBuilder.DropTable(
+                name: "users");
         }
     }
 }

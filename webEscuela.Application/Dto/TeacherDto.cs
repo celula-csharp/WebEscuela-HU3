@@ -1,6 +1,6 @@
 namespace webEscuela.Application.Dto;
 
-public class StudentCreateDto
+public class TeacherCreateDto
 {
     public string Name { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
@@ -9,9 +9,7 @@ public class StudentCreateDto
     public bool? Status { get; set; }
 }
 
-public class StudentUpdateDto
+public class TeacherUpdateDto
 {
-    public string? Career { get; set; }
-    public DateTime? StartDate { get; set; }
-    public bool? Status { get; set; }
+    public string? Specialization { get; set; }
 }

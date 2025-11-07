@@ -1,17 +1,19 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using webEscuela.Application.Dto;
-using webEscuela.Application.Services;
+using webEscuela.Application.Interfaces;
 using webEscuela.Domain.Entities;
 
 namespace webEscuela.Api.Controllers;
+[Authorize]
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/course")]
 public class CourseController : ControllerBase
 {
 
-    private readonly CourseService _courseService;
+    private readonly ICourseService _courseService;
 
-    public CourseController(CourseService courseService)
+    public CourseController(ICourseService courseService)
     {
         _courseService = courseService;
     }

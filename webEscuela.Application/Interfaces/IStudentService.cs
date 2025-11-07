@@ -7,7 +7,7 @@ public interface IStudentService
 {
     Task<IEnumerable<Student>> GetAllAsync();
     Task<Student?> GetByIdAsync(int id);
-    Task<Student> CreateAsync(StudentCreateDto dto);
+    Task<Student> CreateAsync(RegisterStudentRequest dto);
     Task<bool> UpdateAsync(int id, StudentUpdateDto dto);
     Task<bool> DeleteAsync(int id);
 }

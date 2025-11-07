@@ -16,30 +16,30 @@ public class StudentRepository : IStudentRepository
 
     public async Task<IEnumerable<Student>> GetAllAsync()
     {
-        return await _context.students_tb.ToListAsync();
+        return await _context.Students.ToListAsync();
     }
 
     public async Task<Student?> GetByIdAsync(int id)
     {
-        return await _context.students_tb.FindAsync(id);
+        return await _context.Students.FindAsync(id);
     }
 
     public async Task<Student> AddAsync(Student student)
     {
-        _context.students_tb.Add(student);
+        _context.Students.Add(student);
         await _context.SaveChangesAsync();
         return student;
     }
 
     public async Task UpdateAsync(Student student)
     {
-        _context.students_tb.Update(student);
+        _context.Students.Update(student);
         await _context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(Student student)
     {
-        _context.students_tb.Remove(student);
+        _context.Students.Remove(student);
         await _context.SaveChangesAsync();
     }
 }
