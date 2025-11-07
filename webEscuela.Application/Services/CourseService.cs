@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using webEscuela.Application.Interfaces;
 using webEscuela.Domain.Entities;
 using webEscuela.Domain.Interfaces;

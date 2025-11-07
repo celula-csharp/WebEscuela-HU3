@@ -30,7 +30,7 @@ namespace webEscuela.Infrastructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AdminCode")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
@@ -38,19 +38,15 @@ namespace webEscuela.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("AdminCode")
+                    b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("Id")
                         .IsUnique();
 
-                    b.ToTable("admins_tb");
+                    b.ToTable("admins", (string)null);
                 });
 
             modelBuilder.Entity("webEscuela.Domain.Entities.Course", b =>
@@ -85,7 +81,7 @@ namespace webEscuela.Infrastructure.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("courses_tb");
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("webEscuela.Domain.Entities.Enrollment", b =>
@@ -114,20 +110,16 @@ namespace webEscuela.Infrastructure.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("enrollments_tb");
+                    b.ToTable("Enrollments");
                 });
 
-            modelBuilder.Entity("webEscuela.Domain.Entities.Student", b =>
+            modelBuilder.Entity("webEscuela.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Career")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -159,6 +151,25 @@ namespace webEscuela.Infrastructure.Migrations
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users", (string)null);
+
+                    b.UseTptMappingStrategy();
+                });
+
+            modelBuilder.Entity("webEscuela.Domain.Entities.Student", b =>
+                {
+                    b.HasBaseType("webEscuela.Domain.Entities.User");
+
+                    b.Property<string>("Career")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime(6)");
@@ -166,12 +177,6 @@ namespace webEscuela.Infrastructure.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("Code")
                         .IsUnique();
 
@@ -184,58 +189,17 @@ namespace webEscuela.Infrastructure.Migrations
                     b.HasIndex("UserName")
                         .IsUnique();
 
-                    b.ToTable("students_tb");
+                    b.ToTable("students", (string)null);
                 });
 
             modelBuilder.Entity("webEscuela.Domain.Entities.Teacher", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("DocNumber")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.HasBaseType("webEscuela.Domain.Entities.User");
 
                     b.Property<string>("Specialization")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("Code")
                         .IsUnique();
 
@@ -248,7 +212,7 @@ namespace webEscuela.Infrastructure.Migrations
                     b.HasIndex("UserName")
                         .IsUnique();
 
-                    b.ToTable("teachers_tb");
+                    b.ToTable("teachers", (string)null);
                 });
 
             modelBuilder.Entity("webEscuela.Domain.Entities.Course", b =>
@@ -279,6 +243,24 @@ namespace webEscuela.Infrastructure.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("webEscuela.Domain.Entities.Student", b =>
+                {
+                    b.HasOne("webEscuela.Domain.Entities.User", null)
+                        .WithOne()
+                        .HasForeignKey("webEscuela.Domain.Entities.Student", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("webEscuela.Domain.Entities.Teacher", b =>
+                {
+                    b.HasOne("webEscuela.Domain.Entities.User", null)
+                        .WithOne()
+                        .HasForeignKey("webEscuela.Domain.Entities.Teacher", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("webEscuela.Domain.Entities.Student", b =>

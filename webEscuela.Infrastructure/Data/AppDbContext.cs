@@ -13,6 +13,11 @@ public class AppDbContext : DbContext
     // Stablishing unique fields on the DB:
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>().ToTable("users");
+        modelBuilder.Entity<Student>().ToTable("students");
+        modelBuilder.Entity<Teacher>().ToTable("teachers");
+        modelBuilder.Entity<Admin>().ToTable("admins");
+        
         //Teachers
         modelBuilder.Entity<Teacher>()
             .HasIndex(c => c.DocNumber)
@@ -53,14 +58,6 @@ public class AppDbContext : DbContext
             .IsUnique();
         
         //Admin
-        // modelBuilder.Entity<Admin>()
-        //     .HasIndex(c => c.AdminCode)
-        //     .IsUnique();
-        //
-        // modelBuilder.Entity<Admin>()
-        //     .HasIndex(c => c.UserName)
-        //     .IsUnique();
-        
         modelBuilder.Entity<Admin>()
             .HasIndex(c => c.Id)
             .IsUnique();
@@ -74,12 +71,6 @@ public class AppDbContext : DbContext
 
 
     // To create tables on the DB:
-    // public DbSet<Admin> admins_tb { get; set; }
-    // public DbSet<Course> courses_tb { get; set; }
-    // public DbSet<Enrollment> enrollments_tb { get; set; }
-    // public DbSet<Student> students_tb { get; set; }
-    // public DbSet<Teacher> teachers_tb { get; set; }
-    
     public DbSet<Course> Courses { get; set; }
     public DbSet<Enrollment> Enrollments { get; set; }
     
