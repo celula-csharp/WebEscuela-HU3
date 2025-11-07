@@ -1,12 +1,19 @@
+using webEscuela.Application.Interfaces.Services;
+using webEscuela.Application.Services;
+using webEscuela.Domain.Interfaces;
 using webEscuela.Infrastructure.Extensions;
+using webEscuela.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Database Dependency Injection:
 builder.Services.AddInfrastructure(builder.Configuration);
 
+//inyectar 
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 
 
+builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
