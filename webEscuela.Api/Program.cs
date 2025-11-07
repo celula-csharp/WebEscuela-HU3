@@ -16,6 +16,22 @@ builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 // Add services to the container.
 
+
+var corsPolicyName = "AllowAllOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName, policy =>
+    {
+        policy
+            .AllowAnyOrigin()   // Permite cualquier dominio
+            .AllowAnyHeader()   // Permite cualquier encabezado
+            .AllowAnyMethod();  // Permite GET, POST, PUT, DELETE, etc.
+     
+    });
+});
+
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,3 +53,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+// 

@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
 using webEscuela.Domain.Entities;
 using webEscuela.Domain.Interfaces;
