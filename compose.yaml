@@ -1,0 +1,7 @@
+﻿services:
+  webescuela.api:
+    image: webescuela.api
+    build:
+      context: .
+      dockerfile: webEscuela.Api/Dockerfile
+
