@@ -1,6 +1,6 @@
 using webEscuela.Domain.Entities;
 
-namespace DefaultNamespace;
+namespace webEscuela.Domain.Interfaces;
 
 public interface ICourseRepository
 {

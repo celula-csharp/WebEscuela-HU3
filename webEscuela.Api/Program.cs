@@ -1,15 +1,33 @@
+
+
+using webEscuela.Application.Interfaces;
+using webEscuela.Application.Services;
+using webEscuela.Domain.Interfaces;
+using webEscuela.Infrastructure.Repositories;
 using webEscuela.Infrastructure.Extensions;
+using webEscuela.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Database Dependency Injection:
 builder.Services.AddInfrastructure(builder.Configuration);
 
-
-
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<CourseService>();
+
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+
+
+
+//-----------------------------------------------------------------
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
