@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using webEscuela.Application.Auth;
 using webEscuela.Application.Interfaces;
+using webEscuela.Application.Interfaces.Services;
 using webEscuela.Application.Services;
 using webEscuela.Domain.Entities;
 using webEscuela.Domain.Interfaces;
@@ -12,12 +13,30 @@ using webEscuela.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 // Database Dependency Injection:
 builder.Services.AddInfrastructure(builder.Configuration);
 
+//inyectar 
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 // Add services to the container.
+
+
+var corsPolicyName = "AllowAllOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName, policy =>
+    {
+        policy
+            .AllowAnyOrigin()   // Permite cualquier dominio
+            .AllowAnyHeader()   // Permite cualquier encabezado
+            .AllowAnyMethod();  // Permite GET, POST, PUT, DELETE, etc.
+     
+    });
+});
+
+
+
 builder.Services.AddControllers();
 
 // PasswordHasher
